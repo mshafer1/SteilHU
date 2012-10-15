@@ -16,8 +16,9 @@ public class MyFirstJavaProgram {
     public static void main(String[] args) {
         int x = args.length;
         System.out.println("Hello");
+        //without the new there would not be an object created just a reference to one
         Rational r = new Rational();
-        Rational r2 = null;
+        Rational r2 = new Rational(1,2);
         r.display();
         
         String[] names = new String[100];
@@ -25,6 +26,6 @@ public class MyFirstJavaProgram {
         {
             names[i]  = new String();
         }
-        //r2.display();
+        r2.display();
     }
 }

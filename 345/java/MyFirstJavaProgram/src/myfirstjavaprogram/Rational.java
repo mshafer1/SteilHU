@@ -12,6 +12,18 @@ public class Rational {
     public int n;
     public int d;
     
+    Rational(int n, int d)
+    {
+        this.n = n;
+        this.d = d;
+    }
+
+    Rational()
+    {
+        n = 0;
+        d = 1;
+    }
+    
     public void display()
     {
         System.out.print(n);

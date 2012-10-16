@@ -1,5 +1,8 @@
 // // this is a comment
-
+/*
+	this is a multi 
+	line comment
+*/
 // any line that starts with # is an instruction to the compiler
 #include<iostream>
 

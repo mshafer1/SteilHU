@@ -27,5 +27,9 @@ public class MyFirstJavaProgram {
             names[i]  = new String();
         }
         r2.display();
+        
+        r2.equals(r);
+        
+        
     }
 }

@@ -4,11 +4,13 @@
  */
 package myfirstjavaprogram;
 
+
 /**
  *
  * @author dsteil
  */
-public class Rational {
+public class Rational implements Comparable<Rational>
+{
     public int n;
     public int d;
     
@@ -30,4 +32,20 @@ public class Rational {
         System.out.print("/");
         System.out.println(d);
     }
+
+    @Override
+    public int compareTo(Rational t) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+    
+    /**
+     *
+     * @return
+     */
+    @Override
+    public boolean equals(Object rValue)
+    {
+        return false;
+    }
+    
 }

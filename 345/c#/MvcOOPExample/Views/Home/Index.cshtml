@@ -1,0 +1,68 @@
+﻿@model MvcOOPExample.Models.ExampleModel
+
+<h1>Test</h1>
+<h2>@Model.title</h2>
+
+<select id ="cboStates">
+@foreach (var state in Model.states)
+{
+    <option value="@state.Key">@state.Value</option>
+}
+</select>
+
+<div>
+    <input type="text" id="inputX" value="8"/>
+    <input type="text" id="inputY" value="7"/>
+    <input type="button" value="Example AJAX Call To Action"  onclick="exampleCallToAction()"/>
+</div>
+
+<div>
+    <input type="button" value="Load Partial View" onclick="loadOtherView()" />
+    <input type="button" value="Load Partial View 2" onclick="loadOtherView2()" />
+    <div id="main-content"/>
+</div>
+
+<script type="text/javascript">
+    $(document).ready(
+    function () {
+        $("#cboStates").change(stateChanged);
+    });
+
+    function stateChanged() {
+        alert("state selected =  " + $("#cboStates").val());
+    }
+
+    function exampleCallToAction() {
+        var x = $("#inputX").val();
+        var y = $("#inputY").val();
+        var input = { x: x, y: y };
+        var sourceUrl = " @Url.Action("Add","Home") ";
+        var inputJson = JSON.stringify(input);
+
+        //the ajax call is a Json object
+        $.ajax({
+            type: "Post",
+            url: sourceUrl,
+            contentType: "application/json; charset=utf-8",
+            data: inputJson,
+            success: function(sum) { alert(sum); },
+            failure: function() { alert("failed"); }
+        });
+    }
+
+    function loadOtherView() {
+        $.get('@Url.Action("LoadExamplePartial")', function (data) {
+            $("#main-content").empty();
+            $("#main-content").append(data);
+        });
+    }
+
+    function loadOtherView2() {
+        $.get('@Url.Action("LoadExamplePartial2")', function (data) {
+            $("#main-content").empty();
+            $("#main-content").append(data);
+        });
+    }
+   
+
+</script>

@@ -1,5 +1,3 @@
-//unfinished/ambiguous code
-
 #include<iostream>
 using namespace std;
 

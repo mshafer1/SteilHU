@@ -1,7 +1,12 @@
+//this program receives multiple grades for multiple students, stores them in a 2D array,
+	// and then displays a student's grade average
+
 #include<iostream>
 #include<iomanip>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
 
 const int MAX_STUDENTS = 100;
 const int MAX_ASSIGNMENTS = 50;
@@ -21,6 +26,7 @@ void getGrades(int assignments, int students, double gradeBook[][MAX_ASSIGNMENTS
 
 void displayGrades(int assignments, int students, double gradeBook[][MAX_ASSIGNMENTS])
 {
+	cout << endl;
 	for(int assignment = 0; assignment < assignments; assignment++)
 	{
 		for(int student = 0; student < students; student++)
@@ -43,9 +49,9 @@ void displayAverage(int assignments, double grades[] )
 	cout << "Average for student is " << total/assignments << endl;
 }
 
-void main()
+int main()
 {
-	double gradeBook[MAX_STUDENTS][MAX_ASSIGNMENTS];
+	double gradeBook[MAX_STUDENTS][MAX_ASSIGNMENTS]; //2D array
 
 	int students;
 	int assignments;
@@ -55,15 +61,15 @@ void main()
 		cout << "How many students do you have in your class? ";
 		cin >> students;
 	}
-	while(students > MAX_STUDENTS || students < 0);
+	while(students > MAX_STUDENTS || students < 0); // input validation loop
 	do
 	{
 		cout << "How many assignments do you have in your class? ";
 		cin >> assignments;
 	}
-	while(assignments > MAX_ASSIGNMENTS || assignments < 0);
+	while(assignments > MAX_ASSIGNMENTS || assignments < 0); // input validation loop
 
-	getGrades(assignments, students, gradeBook);
+	getGrades(assignments, students, gradeBook); // this function fills gradeBook with values
 	displayGrades(assignments,students, gradeBook);
 	
 	int studentIndex;
@@ -71,4 +77,6 @@ void main()
 	cin >> studentIndex;
 	studentIndex--;
 	displayAverage( assignments, gradeBook[studentIndex]);
+	
+	return 0;
 }

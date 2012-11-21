@@ -1,141 +1,159 @@
+//this program uses the SELECTION SORT algorithm to perform various perations a
+	//float array of GPAs received from the user.
+
 #include<iostream>
-using namespace std;
 
-float HighestGPA(float GPAS[], int GPASInList);
-float LowestGPA(float GPAS[], int GPASInList);
-float AverageGPA(float GPAS[], int GPASInList);
-float MedianGPA(float GPAS[], int GPASInList);
-void GetGPAS(float GPAS[], int GPASInList);
-void SortGPAS(float GPAS[], int GPASInList);
-void DisplayGPASFromLeastToGreatest(float GPAS[], int GPASInList);
+using std::cout;
+using std::cin;
+using std::endl;
 
-void main()
+float HighestGPA(float arrayOfGPAs[], int GPAsInList);
+float LowestGPA(float arrayOfGPAs[], int GPAsInList);
+float AverageGPA(float arrayOfGPAs[], int GPAsInList);
+float MedianGPA(float arrayOfGPAs[], int GPAsInList);
+void GetGPAs(float arrayOfGPAs[], int GPAsInList);
+void SortGPAs(float arrayOfGPAs[], int GPAsInList);
+void DisplayGPAsFromLeastToGreatest(float arrayOfGPAs[], int GPAsInList);
+
+const int MAX_GPA_COUNT = 10;
+
+int main()
 {
-	const int MAX_GPAS = 10;
 
-	float GPAS[MAX_GPAS];
+	float arrayOfGPAs[MAX_GPA_COUNT]; // creating an array of floats
 	
-	int NumberOfGPAS;
+	int numberOfGPAs = 0;
 
 	cout << "How many GPA's? ";
-	cin >> NumberOfGPAS;
 	
-	GetGPAS(GPAS, NumberOfGPAS);
-	SortGPAS(GPAS,NumberOfGPAS);
+	do
+	{
+		cin >> numberOfGPAs;
+		if(numberOfGPAs > MAX_GPA_COUNT)
+		{
+			cout << endl << "Please enter no more than " << MAX_GPA_COUNT << ": ";
+		}
+	}while(numberOfGPAs > MAX_GPA_COUNT); //input validation loop
+	
+	
+	
+	GetGPAs(arrayOfGPAs, numberOfGPAs);
+	SortGPAs(arrayOfGPAs,numberOfGPAs);
 
 	cout << endl;
 
-	DisplayGPASFromLeastToGreatest(GPAS,NumberOfGPAS);
+	DisplayGPAsFromLeastToGreatest(arrayOfGPAs,numberOfGPAs);
 
 	cout << endl;
 
-	cout << "Maximum GPA  = " << HighestGPA(GPAS, NumberOfGPAS) << endl; 
-	cout << "Minimum GPA =  " << LowestGPA(GPAS, NumberOfGPAS) << endl;
-	cout << "Average GPA =  " << AverageGPA(GPAS, NumberOfGPAS) << endl;
-	cout << "Median GPA = " << MedianGPA(GPAS, NumberOfGPAS) << endl;
+	cout << "Maximum GPA  = " << HighestGPA(arrayOfGPAs, numberOfGPAs) << endl; 
+	cout << "Minimum GPA =  " << LowestGPA(arrayOfGPAs, numberOfGPAs) << endl;
+	cout << "Average GPA =  " << AverageGPA(arrayOfGPAs, numberOfGPAs) << endl;
+	cout << "Median GPA = " << MedianGPA(arrayOfGPAs, numberOfGPAs) << endl;
 
-
+	return 0;
 }
 
-float HighestGPA(float GPAS[], int GPASInList)
+float HighestGPA(float arrayOfGPAs[], int GPAsInList) 
 {
 	float HighestGradeFound = 0;
 	
-	SortGPAS(GPAS,GPASInList);
+	SortGPAs(arrayOfGPAs,GPAsInList);
 	
-	if (GPASInList > 0 )
+	if (GPAsInList > 0 )
 	{
-		HighestGradeFound = GPAS[GPASInList-1];
+		HighestGradeFound = arrayOfGPAs[GPAsInList-1];
 	}
 
 	return HighestGradeFound;
 }
 
-float LowestGPA(float GPAS[], int GPASInList)
+float LowestGPA(float arrayOfGPAs[], int GPAsInList)
 {
 	float HighestGradeFound = 0;
 	
-	SortGPAS(GPAS,GPASInList);
+	SortGPAs(arrayOfGPAs,GPAsInList);
 	
-	if (GPASInList > 0 )
+	if (GPAsInList > 0 )
 	{
-		HighestGradeFound = GPAS[0];
+		HighestGradeFound = arrayOfGPAs[0];
 	}
 
 	return HighestGradeFound;
 }
 
-float AverageGPA(float GPAS[], int GPASInList)
+float AverageGPA(float arrayOfGPAs[], int GPAsInList)
 {
-	float TotalGPAS = 0;
+	float TotalGPAs = 0;
 
-	for (int CurrentGrade = 0; CurrentGrade < GPASInList; CurrentGrade++)
+	for (int CurrentGrade = 0; CurrentGrade < GPAsInList; CurrentGrade++)
 	{
-		TotalGPAS = TotalGPAS + GPAS[CurrentGrade];
+		TotalGPAs = TotalGPAs + arrayOfGPAs[CurrentGrade];
 	}
 
-	return TotalGPAS/GPASInList;
+	return TotalGPAs/GPAsInList;
 }
 
-float MedianGPA(float GPAS[], int GPASInList)
+float MedianGPA(float arrayOfGPAs[], int GPAsInList)
 {
 	float Median;
 
-	SortGPAS(GPAS,GPASInList);
+	SortGPAs(arrayOfGPAs,GPAsInList);
 
-	if (GPASInList %2 == 0)
+	if (GPAsInList %2 == 0)
 	{
-		Median = (GPAS[GPASInList/2] + GPAS[(GPASInList/2)-1])/2;
+		Median = (arrayOfGPAs[GPAsInList/2] + arrayOfGPAs[(GPAsInList/2)-1])/2;
 	}
 	else
 	{
-		Median = GPAS[(GPASInList-1)/2];
+		Median = arrayOfGPAs[(GPAsInList-1)/2];
 	}
 
 	return Median;
 }
 
-void GetGPAS(float GPAS[], int GPASInList)
+void GetGPAs(float arrayOfGPAs[], int GPAsInList)
 {
-	for (int CurrentGrade = 0; CurrentGrade < GPASInList; CurrentGrade++)
+	for (int CurrentGrade = 0; CurrentGrade < GPAsInList; CurrentGrade++)
 	{
 		cout << "GPA " << CurrentGrade + 1 << ": ";
-		cin >> GPAS[CurrentGrade];
+		cin >> arrayOfGPAs[CurrentGrade];
 	}
 }
 
-void DisplayGPASFromLeastToGreatest(float GPAS[], int GPASInList)
+void DisplayGPAsFromLeastToGreatest(float arrayOfGPAs[], int GPAsInList)
 {
-	SortGPAS(GPAS, GPASInList);
+	SortGPAs(arrayOfGPAs, GPAsInList);
 
 	cout << "GPA's from least to greatest..." << endl;
 
-	for (int CurrentGrade = 0; CurrentGrade < GPASInList; CurrentGrade++)
+	for (int CurrentGrade = 0; CurrentGrade < GPAsInList; CurrentGrade++)
 	{
-		cout << GPAS[CurrentGrade] << endl;
+		cout << arrayOfGPAs[CurrentGrade] << endl;
 	}
 }
 
-void SortGPAS(float GPAS[], int GPASInList)
+void SortGPAs(float arrayOfGPAs[], int GPAsInList) // SELECTION SORT algorithm
 {
 	int LowestGradeIndex;
-	float temp;
 
-	for (int CurrentGrade = 0; CurrentGrade < GPASInList; CurrentGrade++)
+	for (int CurrentGrade = 0; CurrentGrade < GPAsInList; CurrentGrade++)
 	{
-		LowestGradeIndex = CurrentGrade;
+		LowestGradeIndex = CurrentGrade;	// arrayOfGPAs[currentGrade] will always be the first unsorted element.
+											// All values behind arrayOfGPAs[currentGrade] are sorted.
 
-		for (int i = CurrentGrade; i < GPASInList; i++) 
-		{
-			if (GPAS[LowestGradeIndex] > GPAS[i])
-			{
-				LowestGradeIndex = i;
-			}
+		for (int i = CurrentGrade; i < GPAsInList; i++)			// This loop passes over the unsorted elements
+		{														// and stores the index of the lowest among them.
+			if (arrayOfGPAs[LowestGradeIndex] > arrayOfGPAs[i])
+			{	
+				LowestGradeIndex = i;	
+			}		
 		}
 
-		temp = GPAS[LowestGradeIndex];
-		GPAS[LowestGradeIndex] = GPAS[CurrentGrade];
-		GPAS[CurrentGrade] = temp;
-	}
-
+		float temp;
+		temp = arrayOfGPAs[LowestGradeIndex]; 
+		arrayOfGPAs[LowestGradeIndex] = arrayOfGPAs[CurrentGrade]; 	// these 4 lines of code swap the values of arrayOfGPAs[currentGrade] with
+		arrayOfGPAs[CurrentGrade] = temp;							// the lowest unsorted element. arrayOfGPAs[currentGrade] now contains a sorted element, 
+	} 																//thus currentGrade is ready to be incremented by the loop. 
+	//note that this algorithm does its sorting IN PLACE. In other words, no new arrays are created.
 }

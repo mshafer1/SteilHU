@@ -1,3 +1,11 @@
+// this program explores:
+//	1. constructors
+//		-multiple constructors
+//	2. destructors
+//		-scope
+//	3. operator overloading
+//	4. -> pointer
+
 #include<iostream>
 #include<fstream>
 #include<string>
@@ -22,18 +30,20 @@ struct Arkansan
 		bornAboveI40 = true;
 		teethCount = 0;
 		carsOnBlocks = 2;
+		cout << name << " is born\n";
 	}
 
 	//constructor
 	Arkansan()
 	{
-		name = "Joe Bob";
+		name = "a nameless guy"; // this constructor used when no arguments at declaration
 		bornAboveI40 = true;
 		teethCount = 0;
 		carsOnBlocks = 2;
+		cout << name << " is born\n";
 	}
 
-	//destructor
+	//destructor. Always has tilde and no arguments.
 	~Arkansan()
 	{
 		cout << name << " died" << endl;
@@ -42,32 +52,58 @@ struct Arkansan
 	//member function
 	void display()
 	{
-		cout << name << endl;
-		cout << carsOnBlocks << endl;
-		//...
+		cout << "(display() function called)\n";
+		cout << "name: " << name << endl;
+		cout << "number of teeth:" << teethCount << endl;
+		cout << "cars on blocks: " << carsOnBlocks << endl << endl;
 	}
 };
 
-ostream& operator<<(ostream& out, Arkansan& a)
+// global overload on std::ostream's << operator.
+// it's a special kind of function.
+// this function is only called when an Arkansan object is used.
+ostream& operator << (ostream& out, Arkansan& a)
 {
-	cout << a.name << endl;
-	cout << a.carsOnBlocks << endl;
+	cout << "\n(operator overload function called)\n";
+	cout << "name: "<< a.name << endl;
+	cout << "number of teeth:" << a.teethCount << endl;
+	cout << "cars on blocks: " << a.carsOnBlocks << endl << endl;
 	return out; 
 }
 
-void main()
+int main()
 {
-	Arkansan* pa = new Arkansan("bob");
-	delete pa; 
+	cout << endl;
+	
+	Arkansan* joeBob = new Arkansan("Joe Bob"); //new always calls constructor, Joe Bob is born
+													
+	
+	joeBob -> teethCount = 3;	// joeBob is a pointer; the -> operator allows access to	
+	joeBob -> display(); 		//members of the object pointed to.
+	
+	
+	delete joeBob; // delete always calls destructor, Joe Bob dies
+	
+	cout << endl << "going into a scope...\n";
 	{
-		Arkansan a1[10];
-	}
-	cout << "code after scope" << endl;
+		Arkansan arkansanArray[10]; //array of arkansans. Constructor is called for each element
+		
+		(arkansanArray[3]).name = "Jim Tom";
+		cout << "(arkansanArray[3] is now named Jim Tom)\n";
+	} 
+	// when an object goes out of scope, the destructor is called.
+		// destructors are called for each element of arkansanArray.
+	
+	cout << "...scope left.\n" << endl;
 
-	Arkansan a;
-	cout << a;
-
-}
+	Arkansan namelessGuy;	//constructor called
+	namelessGuy.name = "Henry Steve";
+	
+	Arkansan jerryLou("Jerry Lou");
+	cout << jerryLou;	// operator overload function called
+	
+	return 0;
+} //scope left, so Henry Steve and Jerry Lou died
 
 
 

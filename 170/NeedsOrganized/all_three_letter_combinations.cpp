@@ -1,4 +1,7 @@
-void main()
+//this program outputs to the console every possible combination of 3 lowercase letters.
+#include <iostream>
+
+int main()
 {
 	char guess[] = "aaa";
 
@@ -10,11 +13,12 @@ void main()
 			guess[2] = 'a';
 			while(guess[2] <= 'z')
 			{
-				cout << guess << endl;
+				std::cout << guess << std::endl;
 				guess[2]++;
 			}
 			guess[1]++;
 		}
 		guess[0]++;
 	}
+	return 0;
 }

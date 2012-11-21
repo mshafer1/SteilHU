@@ -1,58 +1,71 @@
-//This program uses the selection sort algorithm to 
-//sort an array of integers.
+// This program uses the selection sort algorithm to 
+// sort an array of integers.
 //
-//Selection Sort Algorithm Description
+// Selection Sort Algorithm Description
 //
-//1.	Repeat steps 2 and 3 as index k goes from 0 to SIZE-2. 
-//2.	Find the smallest array value in the index range k to 
-//	SIZE – 1.  Assume it is found at index smallest. 
-//3.	Swap the old value at position k with the value at smallest. 
+//	1. Repeat steps 2 and 3 as index k goes from 0 to SIZE - 1. 
+//	2. Find the smallest array value in the index range k to 
+//		SIZE.  Assume it is found at index smallest. 
+//	3. Swap the old value at position k with the value at smallest. 
 //
-//Author:  Dana Steil
+// Author:  Dana Steil
 
 #include<iostream>
 #include<iomanip>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::setw;
 
-void Swap(int& x, int& y)
+const int SIZE = 10;
+
+void swap(int& x, int& y)
 {
 	int Temp = x;
 	x = y;
 	y = Temp;
 }
 
-void PrintList(int A[], const int LIST_SIZE)
+void printList(int A[])
 {
-	for (int i = 0; i < LIST_SIZE; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
-		cout << setw(4) << A[i];
+		cout << setw(3) << A[i];
 	}
-	cout << endl;
+	cout << endl << "press enter." << endl;
+	cin.get();
+	
 }
 
-void main()
+int main()
 {
-	int A[] = {3,8,4,7,6};
+	int A[] = {10, 9, 8, 7, 1, 2, 6, 3, 5, 4};
 
-	const int SIZE = 5;
-	int Smallest;
+	int smallest;
 
-	PrintList(A,SIZE);
+	cout << endl << SIZE << " elements to sort: " << endl;
+	printList(A);
 
-	for(int k =0; k <= SIZE -2; k++)
+	for(int k =0; k < SIZE - 1; k++)
 	{
-		Smallest = k;
+		smallest = k;
 
-		for(int i = k+1; i <= SIZE-1; i++)
+		for(int i = k+1; i < SIZE; i++)
 		{
-			if (A[i] < A[Smallest])
+			if (A[i] < A[smallest])
 			{
-				Smallest = i;
+				smallest = i;
 			}
 		}
-		Swap(A[Smallest],A[k]);
-		PrintList(A,SIZE);
+		swap(A[smallest],A[k]);
+		
+		cout << endl << k + 1 << " elements sorted.\n";
+		printList(A);
 	}
+	
+	cout << "Notice that the last (10th) element is already sorted." << endl << "press enter.";
+	cin.get();
 
+	return 0;
 }

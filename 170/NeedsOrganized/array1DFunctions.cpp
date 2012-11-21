@@ -1,3 +1,5 @@
+//unfinished/ambiguous code
+
 #include<iostream>
 using namespace std;
 
@@ -78,7 +80,7 @@ bool hasGrade( int grades[], int gradeCount, char queryGrade )
 }
 
 
-void main()
+int main()
 {
 	int gradeCount;
 	int grades[MAX_GRADES];
@@ -91,4 +93,5 @@ void main()
 		cout << "Yes, there are " << endl;
 	}
 
+	return 0;
 }

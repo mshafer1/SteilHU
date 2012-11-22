@@ -4,7 +4,7 @@
 #include<cstdlib> 	// contains rand and srand.
 #include<time.h> 	// contains time.
 						//time is a good way to seed the random number generator
-						// because time is always changes.
+						// because time always changes.
 using std::cout;
 using std::endl;
 using std::srand;

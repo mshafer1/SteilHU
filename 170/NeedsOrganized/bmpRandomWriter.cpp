@@ -1,9 +1,15 @@
+//this program creates a bitmap image with random RGB values.
+
 #include<iostream>
 #include<fstream>
 #include<time.h>
-using namespace std;
+#include<cstdlib>
 
-void main()
+using std::ofstream;
+using std::ios;
+using std::cout;
+
+int main()
 {
 	srand(time(0));
 
@@ -65,4 +71,5 @@ void main()
 	}
 
 	fout.close();
+	return 0;
 }

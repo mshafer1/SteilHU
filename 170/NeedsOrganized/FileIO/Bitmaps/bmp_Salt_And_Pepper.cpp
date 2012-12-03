@@ -6,7 +6,7 @@ void addSaltAndPepper(/*insert appropriate parameters here*/)
 	
 	for(unsigned int i = 0; i < height * width; i++)
 	{
-		switch(rand() % 10) // only alters 2 in 10 pixels
+		switch(rand() % 10) // alters about 2 pixels for every 10
 		{
 			case 0:
 				pixel[i].red = 0;

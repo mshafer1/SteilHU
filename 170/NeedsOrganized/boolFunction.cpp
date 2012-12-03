@@ -1,17 +1,17 @@
 #include<iostream>
-#include<iomanip>
 
-using namespace std;
+using std::cin;
+using std::cout;
 
-bool UserWantsToContinue()
+bool userWantsToContinue()
 {
 	bool Continue = false;
-	char UserCommand;
+	char userCommand;
 
-	cout << "Do you want to ___ again?";
-	cin >> UserCommand;
+	cout << "Do you want to repeat? (y/n) ";
+	cin >> userCommand;
 
-	if (UserCommand == 'y' || UserCommand == 'Y')
+	if (userCommand == 'y' || userCommand == 'Y')
 	{
 		Continue = true;
 	}
@@ -19,13 +19,15 @@ bool UserWantsToContinue()
 	return Continue;
 }
 
-void main()
+int main()
 {
 	do
 	{
 		//do what the program is designed to do
+		
 	}
-	while(UserWantsToContinue());
+	while(userWantsToContinue());
+	return 0;
 }
 
 

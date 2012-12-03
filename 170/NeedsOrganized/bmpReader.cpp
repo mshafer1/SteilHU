@@ -1,8 +1,15 @@
+// This program reads from a bmp file and
+// displays the results to the console.
+
 #include<iostream>
 #include<fstream>
-using namespace std;
 
-void main()
+using std::ifstream;
+using std::cout;
+using std::endl;
+using std::ios;
+
+int main()
 {
 	ifstream fin;
 	char type[3] = "";
@@ -92,5 +99,6 @@ void main()
 	}
 
 	fin.close();
+	return 0;
 
 }

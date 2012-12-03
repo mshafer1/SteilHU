@@ -1,5 +1,28 @@
+//this program is a simple implementation of the bubble sort algorithm
+
 #include <iostream>
-using namespace std;
+
+using std::cout;
+using std::cin;
+
+//	Bubble Sort Algorithm Description
+//
+// 1.	Repeat steps 2-6 as index Passes goes from 0 to Items – 1 
+//			times or until you find that the array is sorted. 
+//
+// 2.	Assume the array is sorted. 
+//
+// 3.	Repeat steps 4-6 as index Comparisons goes from 0 to 
+//			Items – 1 –  i. 
+//
+// 4.	On each pass compare element at index Comparisons and element 
+//			Comparisons + 1. 
+//
+// 5.	If the pair is in increasing order (or the values 
+//			are identical) leave the values as they are.  
+//
+// 6.	If the pair is in decreasing order, swap them.  
+//			Now you know that the array was not sorted. 
 
 void BubbleSort ( int Array[], int Items)
 {
@@ -19,7 +42,7 @@ void BubbleSort ( int Array[], int Items)
 	}
 }
 
-void main()
+int main()
 {
 	const int ITEMS = 7;
 
@@ -31,6 +54,9 @@ void main()
 	{
 		cout << TestArray[i] << " ";
 	}
+	cout << "\nPress Enter.";
+	cin.get();
+	return 0;
 }
 
 

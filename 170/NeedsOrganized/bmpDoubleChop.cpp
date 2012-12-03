@@ -1,6 +1,16 @@
+// runtime error, this is a longer .cpp file and
+// there are many simlar ones so I'm moving it to rough as-is
+
 #include<iostream>
 #include<fstream>
-using namespace std;
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::ifstream;
+using std::ofstream;
+using std::ios;
+using std::ios_base;
 
 struct Pixel
 {
@@ -39,10 +49,9 @@ struct Picture
 void readBitmap( Picture& picture );
 void writeBitmap( const Picture& picture );
 void displayFileHeader( Header& header );
-void invertColors( Picture& picture );
 void doubleChop( Picture& picture );
 
-void main()
+int main()
 {
 	Picture picture;
 
@@ -61,6 +70,8 @@ void main()
 
 	//give the dynamic memory back to the OS
 	delete[] picture.pixels;
+	
+	return 0;
 }
 
 void doubleChop( Picture& picture )
@@ -201,14 +212,4 @@ void displayFileHeader( Header& header )
 	cout <<  header.biYPelsPerMeter<< endl;
 	cout <<  header.biClrUsed<< endl;
 	cout <<  header.biClrImportant<< endl;
-}
-
-void invertColors( Picture& picture )
-{
-	for(int i = 0; i < picture.header.biWidth * picture.header.biHeight ; i++)
-	{
-		picture.pixels[i].blue = unsigned char(255) - picture.pixels[i].blue;
-		picture.pixels[i].green = unsigned char(255) - picture.pixels[i].green;
-		picture.pixels[i].red = unsigned char(255) - picture.pixels[i].red;
-	}
 }

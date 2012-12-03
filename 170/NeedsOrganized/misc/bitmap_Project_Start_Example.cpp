@@ -2,7 +2,15 @@
 #include<fstream>
 #include<string>
 #include<time.h>
-using namespace std;
+#include<cstdlib>
+
+using std::ifstream;
+using std::ofstream;
+using std::cout;
+using std::endl;
+using std::cin;
+using std::string;
+using std::ios;
 
 struct BmpFileHeader
 {
@@ -42,7 +50,7 @@ void displayBitmapHeaderInfo(BmpFileHeader bmpFileHeader, BmpImageHeader bmpImag
 void writeFile( string fileName, BmpFileHeader& bmpFileHeader, BmpImageHeader& bmpImageHeader, RgbTriple* imageData);
 void addSaltAndPepper( BmpImageHeader& bmpImageHeader, RgbTriple* imageData);
 
-void main()
+int main()
 {
 	srand( (unsigned int) time( NULL ) );
 	string fileName;
@@ -74,6 +82,8 @@ void main()
 	{
 		cout << fileName << " was not found." << endl;
 	}
+	
+	return 0;
 }
 
 void getFileName(string& fileName)

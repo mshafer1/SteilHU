@@ -1,4 +1,4 @@
-// this is a sample function used to invertthe colors of the pixels in a bitmap
+// This sample function inverts the colors of the pixels in a bitmap.
 
 void invertColors(/*insert necessary parameters*/)
 {

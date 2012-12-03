@@ -1,4 +1,4 @@
-//this sample function adds "salt and pepper" to a bitmap image
+// This sample function adds "salt and pepper" to a bitmap image.
 
 void addSaltAndPepper(/*insert appropriate parameters here*/)
 {

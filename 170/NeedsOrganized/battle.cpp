@@ -1,12 +1,13 @@
 #include<iostream>
 #include<math.h>
 #include<time.h>
+#include<cstdlib>
 #include<conio.h>
 #include<string>
 
 using namespace std;
 
-void main()
+int main()
 {
 	do
 	{
@@ -112,5 +113,6 @@ void main()
 		}
 	}
 	while(1 > 0);
+	return 0;
 }
 

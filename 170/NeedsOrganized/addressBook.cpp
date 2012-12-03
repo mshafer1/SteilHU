@@ -1,17 +1,25 @@
+//this program allows the user to create and edit an address book.
+//ifstream, ofstream, and fstream are used
+
 #include<iostream>
 #include<string>
 #include<fstream>
 
-using namespace std;
+using std::ios;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::fstream;
+using std::ofstream;
+using std::ifstream;
+using std::string;
 
 const int SEARCH = 1;
 const int ADD = 2;
 const int VIEW_BOOK = 3;
 const int EDIT = 4;
 const int EXIT = 0;
-
 const int ENTRY_NOT_FOUND = -1;
-
 const char FILE_NAME[] = "Address Book.dat";
 
 void Add();
@@ -21,7 +29,7 @@ void ShowMenu();
 void ViewBook();
 void EditBook();
 
-void main()
+int main()
 {
 	int UserSelection;
 
@@ -47,6 +55,7 @@ void main()
 
 	}
 	while(UserSelection != EXIT);
+	return 0;
 }
 
 
@@ -130,11 +139,12 @@ void Search()
 
 void Add()
 {
-	char Name[50];
-	char Address[200];
-	char PhoneNumber[25];
-	int Age;
+	char Name[50] = {'\0'};
+	char Address[200] = {'\0'};
+	char PhoneNumber[25] = {'\0'};
+	int Age = 0;
 
+	cin.get(); //trash the previous character return
 	cout << "Name? ";
 	cin.getline(Name,50);
 
@@ -146,13 +156,12 @@ void Add()
 
 	cout << "Age?";
 	cin >> Age;
-	cin.get(); //trash end of line char
+	cout << endl;
 
 	ofstream fout;
 
 	//ios::trunc
 	fout.open(FILE_NAME,ios::app | ios::binary); // open the file for appending
-
 	//write expects (const char*, int)
 	fout.write(Name,sizeof(Name));
 	fout.write(Address,200);
@@ -168,26 +177,37 @@ void ViewBook()
 
 	fin.open(FILE_NAME);
 
+	char Name[50];
+	char Address[200];
+	char PhoneNumber[25];
+	int Age;
+	
 	if(fin)
 	{
-		char Name[50];
-		char Address[200];
-		char PhoneNumber[25];
-		int Age;
-
 		while(!fin.eof())
 		{
 			fin.read(Name,sizeof(Name));
 			fin.read(Address,200);
 			fin.read(PhoneNumber,25);
 			fin.read((char*)&Age,sizeof(Age));
-
 			if (!fin.eof())
 			{
-				cout << Name << endl;
-				cout << Address << endl;
-				cout << PhoneNumber << endl;
-				cout << Age << endl << endl;
+				if(Name[0] != '\0') 
+				{
+					cout << Name << endl;
+				}
+				if(Address[0] != '\0') 
+				{
+					cout << Address << endl;
+				}
+				if(PhoneNumber[0] != '\0')
+				{
+					cout << PhoneNumber << endl;
+				}
+				if(Age)
+				{
+					cout << Age << endl << endl;
+				}
 			}
 		}
 	}

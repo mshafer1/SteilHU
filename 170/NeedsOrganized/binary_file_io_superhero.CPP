@@ -1,9 +1,18 @@
-#include<iostream>
-#include<fstream.h>
-#include<string.h>
-#include<stdlib.h>
+//this program is in included in the rough folder because
+//it is not very polished and it accomplishes similar things
+//as addressBook.cpp
 
-using namespace std;
+#include<iostream>
+#include<fstream>
+#include<string>
+
+using std::ofstream;
+using std::ifstream;
+using std::fstream;
+using std::cout;
+using std::cin;
+using std::ios;
+using std::endl;
 
 struct CHeight
 {
@@ -31,7 +40,7 @@ void UpdateSuperHero();
 void ShowMenu();
 void PreformUsersCommand(char MenuSelection);
 
-void main()
+int main()
 {
 	char MenuSelection;
 
@@ -50,6 +59,7 @@ void main()
 		MenuSelection = toupper(MenuSelection);
 		cin.ignore(cin.rdbuf()->in_avail(),'\n');
 	}
+	return 0;
 }
 
 void GetSuperHeroFromUser(CSuperHero& SuperHero)

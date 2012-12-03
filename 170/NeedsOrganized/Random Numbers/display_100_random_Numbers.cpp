@@ -7,8 +7,7 @@
 						// because time always changes.
 using std::cout;
 using std::endl;
-using std::srand;
-using std::rand;
+using std::cin;
 
 int main()
 {
@@ -17,9 +16,10 @@ int main()
 
 	for(int i = 0; i < 100; i++)
 	{
-		cout << rand() << endl;
+		cout << i + 1 << ": " << rand() << endl;
 	}
 	
+	cin.get();
 	return 0;
 }
 

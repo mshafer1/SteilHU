@@ -1,15 +1,15 @@
-
-
 //Kevin Jensen
 //Steil 9:00 Daily
 //COMP 170
 
-//Draws a picture of the US Flag
+//Draws a bitmap of the US Flag
 #include<iostream>
 #include<fstream>
-using namespace std;
 
-void main()
+using std::ofstream;
+using std::ios;
+
+int main()
 {
     ofstream fout;
 
@@ -381,4 +381,5 @@ void main()
             index = index + 159;
         }
     }
+	return 0;
 }

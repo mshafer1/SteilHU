@@ -1,5 +1,7 @@
-// this program shows how to create and use multiple functions with the same name.
-// when homonymous functions exist, the compiler determines which function to use based on the function call's arguments.
+// this program shows how to create and use multiple functions 
+// with the same name, or function overloading. When overloaded
+// functions exist, the compiler determines which function to use
+// based on the arguments of the function call.
 
 #include<iostream>
 #include<iomanip>

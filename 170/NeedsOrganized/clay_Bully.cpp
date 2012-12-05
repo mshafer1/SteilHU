@@ -2,9 +2,14 @@
 #include<fstream>
 #include<string>
 
-using namespace std;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::ifstream;
+using std::ofstream;
+using std::string;
 
-void main()
+int main()
 {
 	ifstream fin("clay.in");
 	ofstream fout("clay.out");
@@ -66,5 +71,6 @@ void main()
 	{
 		cout << "Can not find clay.in" << endl;
 	}
+	return 0;
 
 }

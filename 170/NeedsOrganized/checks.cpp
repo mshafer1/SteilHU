@@ -1,6 +1,13 @@
+//this rough program seperates digits, 
+//as you would do in a check-writing program
+
 #include <iostream>
 #include <string>
-using namespace std;
+
+using std::cin;
+using std::cout;
+using std::endl;
+using std::string;
  
 int hundredsPlace( int money );
 int tensPlace( int money );
@@ -8,9 +15,10 @@ int onesPlace( int money );
 int teensPlace( int money );
 void displayMoneyTrio( int trio, string category );
 
-void main()
+int main()
 {
 	int wholeMoney;
+	cout << "Whole Number?\n>";
 	cin >> wholeMoney;
 
 	int billions = wholeMoney / 1000000000;
@@ -25,10 +33,13 @@ void main()
 	int smallGroup = wholeMoney;
 
 
-	displayMoneyTrio( billions, "billion" );
-	displayMoneyTrio( millions, "million" );
-	displayMoneyTrio( thousands, "thousand" );
-	displayMoneyTrio( smallGroup, "" );
+	displayMoneyTrio( billions, "\nbillions place:" );
+	displayMoneyTrio( millions, "\nmillions place:" );
+	displayMoneyTrio( thousands, "\nthousands place:" );
+	displayMoneyTrio( smallGroup, "\nEverything else:" );
+	
+	cin.get(); cin.get();
+	return 0;
 
 }
 
@@ -67,10 +78,13 @@ void displayMoneyTrio( int trio, string category )
 {
 	if( trio  > 0 )
 	{
-		cout << "There are " << displayDigit(hundredsPlace( trio ) ) << " hundreds\n";
-		cout << "There are " << tensPlace( trio ) << " tens\n";
-		cout << "There are " << teensPlace( trio ) << " teens\n";
-		cout << "There are " << onesPlace( trio ) << " ones\n";
 		cout << category << endl;
+		cout << "There are " << hundredsPlace( trio ) << " hundreds\n";
+		cout << "There are " << tensPlace( trio ) << " tens\n";
+		if(teensPlace( trio ))
+		{
+			cout << "   - 'Teen' number: " << teensPlace( trio ) << endl;
+		}
+		cout << "There are " << onesPlace( trio ) << " ones\n";
 	}
 }

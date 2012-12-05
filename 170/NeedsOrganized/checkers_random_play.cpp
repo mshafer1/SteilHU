@@ -1,9 +1,12 @@
+//this program is a checkers game, where both players make random moves.
+
 #include<iostream>
 #include<time.h>
+#include<cstdlib>
 
-
-using namespace std;
-
+using std::cout;
+using std::endl;
+using std::cin;
 
 const char WALL = (char)219;
 const char MALE = (char)11;
@@ -32,7 +35,7 @@ bool moveDistanceIsValid(int fromColumn, int toColumn,
 void getRandomMove(int& fromRow, int& toRow, char& fromColumn, char& toColumn );
 
 
-void main()
+int main()
 {
 	char gameBoard[BOARD_SIZE][BOARD_SIZE];
 	char player = FEMALE;
@@ -53,6 +56,7 @@ void main()
 		{
 			player = FEMALE;
 		}
+		cin.get();
 	}
 
 	displayGameBoard( gameBoard );
@@ -64,6 +68,7 @@ void main()
 	{
 		cout << "Male wins " << endl;
 	}
+	return 0;
 }
 
 void initializeGameBoard( char gameBoard[][BOARD_SIZE] )

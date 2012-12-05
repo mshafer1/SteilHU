@@ -1,9 +1,10 @@
 #include<iostream>
 #include<time.h>
+#include<cstdlib>
 
-
-using namespace std;
-
+using std::cout;
+using std::cin;
+using std::endl;
 
 const char WALL = (char)219;
 const char MALE = (char)11;
@@ -31,8 +32,7 @@ bool moveDistanceIsValid(int fromColumn, int toColumn,
 						char player, char gameBoard[][BOARD_SIZE] );
 void getMoveFromUser(char gameBoard[][BOARD_SIZE], int& fromRow, int& toRow, char& fromColumn, char& toColumn );
 
-
-void main()
+int main()
 {
 	char gameBoard[BOARD_SIZE][BOARD_SIZE];
 	char player = FEMALE;
@@ -64,6 +64,7 @@ void main()
 	{
 		cout << "Male wins " << endl;
 	}
+	return 0;
 }
 
 void initializeGameBoard( char gameBoard[][BOARD_SIZE] )

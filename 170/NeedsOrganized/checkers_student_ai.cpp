@@ -1,7 +1,10 @@
 #include<iostream>
 #include<time.h>
+#include<cstdlib>
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
 const char WALL = (char)219;
 const char MALE = (char)11;
@@ -51,7 +54,7 @@ void female7Move( char gameBoard[][BOARD_SIZE], int& fromRow, int& toRow, int& f
 void female8Move( char gameBoard[][BOARD_SIZE], int& fromRow, int& toRow, int& fromColumn, int& toColumn );
 void femaleRandomMove( char gameBoard[][BOARD_SIZE], int& fromRow, int& toRow, int& fromColumn, int& toColumn );
 
-void main()
+int main()
 {
 	char gameBoard[BOARD_SIZE][BOARD_SIZE];
 	char player = FEMALE;
@@ -99,6 +102,7 @@ void main()
 		}
 		cout << endl; 
 	}
+	return 0;
 
 }
 

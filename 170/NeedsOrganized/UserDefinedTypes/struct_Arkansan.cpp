@@ -4,13 +4,17 @@
 //	2. destructors
 //		-scope
 //	3. operator overloading
-//	4. -> pointer
+//	4. -> operator
 
 #include<iostream>
 #include<fstream>
 #include<string>
-using namespace std;
 
+using std::cout;
+using std::cin;
+using std::endl;
+using std::string;
+using std::ostream;
 
 struct Arkansan
 {

@@ -1,0 +1,14 @@
+float squareRoot(float x)
+{
+	float s = 2;
+	float result = (x/s + s)/2;
+
+	while(absoluteValue(result-s) >= .001)
+	{
+		s = result;
+		result = (x/s + s)/2;
+		cout << result << endl;
+	}
+
+	return result;
+}
